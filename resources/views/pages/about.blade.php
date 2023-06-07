@@ -83,7 +83,7 @@
                     {{ config('app.name') }}
                 </h1>
                 <p class="text-sm md:text-xl font-normal text-orange-700 flex justify-center text-center">
-                    ~ Where craftsmanship meets creativity ~
+                    [ Where craftsmanship meets creativity ]
                 </p>
             </div>
         </div>
@@ -103,7 +103,7 @@
 
         <section class="flex flex-col md:flex-row w-full md:space-x-10 space-y-8 px-2 md:px-16 py-10 items-center">
             <div class="flex flex-col space-y-5 w-full md:w-[25%] h-[60vh] shadow-lg box-border">
-                <img src="{{ asset('storage/img/jpg/profile/ceo-dp.jpg') }}" alt="Founder picture" class="h-full hover:scale-110 transition duration-300 ease-in w-full rounded-lg border-4 border-gray-400 object-cover">
+                <img src="{{ asset('storage/img/png/avatar.png') }}" alt="Founder picture" class="h-full hover:scale-110 transition duration-300 ease-in w-full rounded-lg border-4 border-gray-400 object-cover">
             </div>
 
             <div class="flex flex-col space-y-2 w-full md:w-[75%]">

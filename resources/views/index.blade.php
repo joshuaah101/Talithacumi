@@ -148,7 +148,7 @@
             </div>
             <hr>
 
-            <div class="flex flex-wrap gap-x-12 gap-y-6">
+            <div class="flex overflow-x-auto whitespace-nowrap space-x-10 py-8">
                 @foreach ($categories as $category)
                 <a href="{{ url('catalog/'.$category->catId) }}" class="hover:text-[#CC9E5A] text-amber-50 transition duration-300 ease-in space-x-2 flex items-center">
                     <span class="material-icons-outlined">
@@ -272,25 +272,62 @@
                         sell
                     </span>
                     <span class="">
-                        Items below #30,000
+                        Products below #30,000
                     </span>
                 </div>
 
                 <div class="overflow-x-auto whitespace-nowrap bg-white rounded px-5 py-4 space-x-3">
-                    @foreach($priceCheckBelow30k as $priceCheck)
+                    @foreach($priceCheckBelow30k as $below30k)
                         <div class="image-container inline-block relative whitespace-nowrap w-1/2 md:w-1/5">
-                            <img src="{{ asset('storage/img/jpg/'.$priceCheck->category.'/'.$priceCheck->img_name.'.'.$priceCheck->img_ext) }}" alt="picture" class="h-40 w-full rounded-md" />
+                            <img src="{{ asset('storage/img/jpg/'.$below30k->category.'/'.$below30k->img_name.'.'.$below30k->img_ext) }}" alt="picture" class="h-40 w-full rounded-md" />
                             <div class="overlay flex justify-center items-center flex-col space-y-4 w-full px-2">
                                 <span class="text-base font-semibold text-white capitalize">
-                                    {{ $priceCheck->product_name }}
+                                    {{ $below30k->product_name }}
                                 </span>
-                                <div class="flex flex-col space-y-2 w-full">
+                                <div class="flex flex-col space-y-2 w-full justify-center items-center">
                                     @foreach($contacts as $contact)
-                                        <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $priceCheck->product_name }}*" class="text-green-50 rounded-md p-1 hover:bg-green-50 hover:text-green-500 transition duration-300 ease-in text-xs text-center" target="_blank">
+                                        <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $below30k->product_name }}*" class="text-green-50 rounded-md px-8 py-2 hover:bg-green-50 hover:text-green-500 transition duration-300 ease-in text-xs text-center" target="_blank">
                                             Get product
                                         </a>
                                     @endforeach
-                                    <a href="{{ url('catalog/'.$priceCheck->catId) }}" class="rounded-md text-amber-100 px-2 py-1 font-semibold hover:bg-amber-50 transition duration-300 ease-in hover:text-orange-500 text-xs text-center">
+                                    <a href="{{ url('catalog/'.$below30k->catId) }}" class="rounded-md text-amber-100 px-6 py-1 font-semibold hover:bg-amber-50 transition duration-300 ease-in hover:text-orange-500 text-xs text-center">
+                                        View more
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+        <section class="flex flex-col space-y-10">
+                {{-- block 2 --}}
+            <div class="flex flex-col space-y-1">
+                <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
+                    <span class="material-icons-outlined animate-pulse">
+                        sell
+                    </span>
+                    <span class="">
+                        For Office Use
+                    </span>
+                </div>
+
+                <div class="overflow-x-auto whitespace-nowrap bg-white rounded px-5 py-4 space-x-3">
+                    @foreach($officeUse as $office)
+                        <div class="image-container inline-block relative whitespace-nowrap w-1/2 md:w-1/5">
+                            <img src="{{ asset('storage/img/jpg/'.$office->category.'/'.$office->img_name.'.'.$office->img_ext) }}" alt="picture" class="h-40 w-full rounded-md" />
+                            <div class="overlay flex justify-center items-center flex-col space-y-4 w-full px-2">
+                                <span class="text-base font-semibold text-white capitalize">
+                                    {{ $office->product_name }}
+                                </span>
+                                <div class="flex flex-col space-y-2 w-full justify-center items-center">
+                                    @foreach($contacts as $contact)
+                                        <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $office->product_name }}*" class="text-green-50 rounded-md px-8 py-2 hover:bg-green-50 hover:text-green-500 transition duration-300 ease-in text-xs text-center" target="_blank">
+                                            Get product
+                                        </a>
+                                    @endforeach
+                                    <a href="{{ url('catalog/'.$office->catId) }}" class="rounded-md text-amber-100 px-6 py-1 font-semibold hover:bg-amber-50 transition duration-300 ease-in hover:text-orange-500 text-xs text-center">
                                         View more
                                     </a>
                                 </div>

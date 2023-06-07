@@ -31,6 +31,7 @@ class PagesController extends Controller
                             ->where('price', '<=', 30000)
                             ->take(20)
                             ->get();
+
         $sliders = DB::table('sliders')
                     ->inRandomOrder()
                     ->take(5)
@@ -41,6 +42,12 @@ class PagesController extends Controller
                         ->where('catId', 102233)
                         ->take(20)
                         ->get();
+                        
+        $officeUse = DB::table('catalogues')
+                    ->inRandomOrder()
+                    ->where('catId', 111000)
+                    ->take(30)
+                    ->get();
 
 
         return [
@@ -50,7 +57,8 @@ class PagesController extends Controller
             'products' => $products,
             'priceCheckBelow30k' => $products_below_30k,
             'certifications' => $certifications,
-            'kidsCorner' => $kidsCorner
+            'kidsCorner' => $kidsCorner,
+            'officeUse' => $officeUse
         ];
     }
 
