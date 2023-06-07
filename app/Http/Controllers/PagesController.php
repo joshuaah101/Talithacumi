@@ -39,13 +39,13 @@ class PagesController extends Controller
 
         $kidsCorner = DB::table('catalogues')
                         ->inRandomOrder()
-                        ->where('catId', 102233)
+                        ->where('catId', 'tgc-102233')
                         ->take(20)
                         ->get();
-                        
+
         $officeUse = DB::table('catalogues')
                     ->inRandomOrder()
-                    ->where('catId', 111000)
+                    ->where('catId', 'tgc-111000')
                     ->take(30)
                     ->get();
 
