@@ -2237,20 +2237,12 @@ input:checked + .toggle-bg {
     height: 23rem;
   }
 
-  .md\:max-h-\[75vh\] {
-    max-height: 75vh;
+  .md\:max-h-\[80vh\] {
+    max-height: 80vh;
   }
 
   .md\:max-h-\[900px\] {
     max-height: 900px;
-  }
-
-  .md\:max-h-\[85vh\] {
-    max-height: 85vh;
-  }
-
-  .md\:max-h-\[80vh\] {
-    max-height: 80vh;
   }
 
   .md\:min-h-\[55vh\] {
