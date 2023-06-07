@@ -93,16 +93,16 @@
     </nav>
 
 {{-- sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl --}}
-    <header class="flex flex-col w-full h-screen md:max-h-[75vh]">
+    <header class="flex flex-col w-full h-screen md:max-h-[80vh]">
 
         {{-- slideshow --}}
-       <div class="w-full max-h-screen md:max-h-[75vh]">
-            <div id="animation-carousel" class="relative z-0 max-h-screen md:max-h-[75vh]" data-carousel="slide">
+       <div class="w-full max-h-screen md:max-h-[80vh]">
+            <div id="animation-carousel" class="relative z-0 max-h-screen md:max-h-[80vh]" data-carousel="slide">
                 <!-- Carousel wrapper -->
-                <div class="relative h-screen max-h-screen md:max-h-[75vh] overflow-hidden rounded-none md:rounded-sm">
+                <div class="relative h-screen max-h-screen md:max-h-[80vh] overflow-hidden rounded-none md:rounded-sm">
                     @foreach ($sliders as $slider)
                         <div class="hidden duration-700 ease-in-out box-border" data-carousel-item="active">
-                            <img src="{{ asset('storage/img/jpg/sliders/'.$slider->img_name.'.'.$slider->img_ext ) }}" class="h-screen md:max-h-[75vh] w-full object-fit" alt="{{ $slider->img_name }}">
+                            <img src="{{ asset('storage/img/jpg/sliders/'.$slider->img_name.'.'.$slider->img_ext ) }}" class="h-screen md:max-h-[80vh] w-full object-fit" alt="{{ $slider->img_name }}">
                         </div>
                     @endforeach
 

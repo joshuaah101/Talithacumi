@@ -1282,13 +1282,6 @@ input:checked + .toggle-bg {
 .gap-2 {
   gap: 0.5rem;
 }
-.gap-x-12 {
-  -moz-column-gap: 3rem;
-       column-gap: 3rem;
-}
-.gap-y-6 {
-  row-gap: 1.5rem;
-}
 .gap-y-5 {
   row-gap: 1.25rem;
 }
@@ -1331,6 +1324,11 @@ input:checked + .toggle-bg {
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
+.space-x-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
 .space-y-10 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1366,16 +1364,6 @@ input:checked + .toggle-bg {
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
-.space-x-8 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(2rem * var(--tw-space-x-reverse));
-  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
-}
-.space-x-10 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(2.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
-}
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1384,9 +1372,6 @@ input:checked + .toggle-bg {
 }
 .overflow-y-auto {
   overflow-y: auto;
-}
-.overflow-x-scroll {
-  overflow-x: scroll;
 }
 .whitespace-nowrap {
   white-space: nowrap;
@@ -1543,14 +1528,14 @@ input:checked + .toggle-bg {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.p-1 {
-  padding: 0.25rem;
-}
 .p-4 {
   padding: 1rem;
 }
 .p-2\.5 {
   padding: 0.625rem;
+}
+.p-1 {
+  padding: 0.25rem;
 }
 .p-2 {
   padding: 0.5rem;
@@ -1578,6 +1563,10 @@ input:checked + .toggle-bg {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 .py-4 {
   padding-top: 1rem;
@@ -1878,7 +1867,7 @@ input:checked + .toggle-bg {
 }
 
 ::-webkit-scrollbar {
-    width: 7px;
+    width: 5px;
     height: 4px;;
 }
 
@@ -2254,6 +2243,14 @@ input:checked + .toggle-bg {
 
   .md\:max-h-\[900px\] {
     max-height: 900px;
+  }
+
+  .md\:max-h-\[85vh\] {
+    max-height: 85vh;
+  }
+
+  .md\:max-h-\[80vh\] {
+    max-height: 80vh;
   }
 
   .md\:min-h-\[55vh\] {
