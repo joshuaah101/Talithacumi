@@ -1,6 +1,6 @@
 ---
 deployment:
       tasks:
-        - export DEPLOYPATH=/home2/talithac/public_html
-        - /bin cp -r * $DEPLOYPATH                       
+        - export DEPLOYPATH=/home2/talithac/public_html/
+        - /bin/ cp -r * $DEPLOYPATH
 
