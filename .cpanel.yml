@@ -1,6 +1,6 @@
 ---
 deployment:
       tasks:
-        - export DEPLOYPATH=/home2/talithac/public_html  # Add /<app_folder> if required
-        - /bin cp -r * $DEPLOYPATH                           #copy all from root
+        - export DEPLOYPATH=/home2/talithac/public_html
+        - /bin cp -r * $DEPLOYPATH                       
 
