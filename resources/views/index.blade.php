@@ -6,7 +6,7 @@
 
 @section('body')
     {{-- mobile menu --}}
-    <div class="hidden shadow-md sticky top-0 left-0 z-20 h-screen overflow-y-auto w-full transition duration-300 ease-in" id="mobile-menu">
+    <div class="hidden shadow-md sticky top-0 right-0 z-20 h-screen overflow-y-auto w-full transition duration-300 ease-in" id="mobile-menu">
         <div class="bg-amber-900 px-4 py-3 my-auto space-y-12 flex flex-col">
             <div class="flex items-center justify-between">
                 <a href="/" class="">
@@ -21,7 +21,7 @@
             </div>
 
             <div class="space-y-5 flex flex-col px-2">
-                <div class="space-y-3 flex flex-col items-center justify-center">
+                <div class="space-y-3 flex flex-col">
                     <span class="text-gray-400">
                         #Menu
                     </span>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
 
-                <div class="space-y-3 flex flex-col mt-16 items-center justify-center">
+                <div class="space-y-3 flex flex-col mt-16">
                     <span class="text-gray-400">
                         #Categories
                     </span>
@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <nav class="bg-amber-900 w-full shadow-md sticky top-0 z-10 transition duration-300 ease-in border-b-2 border-[#CC9E5A]">
+    <nav class="bg-amber-900 w-full shadow-md sticky top-0 z-10 border-b-2 border-[#CC9E5A]">
         <div class="flex sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto justify-between items-center py-3 px-5 md:px-0">
             <a href="/" class="">
                 <img src="{{ asset('storage/img/png/logo.png') }}" alt="" class="w-10 md:w-12">
@@ -93,53 +93,48 @@
     </nav>
 
 {{-- sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl --}}
-    <header class="flex flex-col w-full h-screen md:max-h-[80vh]">
-
-        {{-- slideshow --}}
-       <div class="w-full max-h-screen md:max-h-[80vh]">
-            <div id="animation-carousel" class="relative z-0 max-h-screen md:max-h-[80vh]" data-carousel="slide">
-                <!-- Carousel wrapper -->
-                <div class="relative h-screen max-h-screen md:max-h-[80vh] overflow-hidden rounded-none md:rounded-sm">
-                    @foreach ($sliders as $slider)
-                        <div class="hidden duration-700 ease-in-out box-border" data-carousel-item="active">
-                            <img src="{{ asset('storage/img/jpg/sliders/'.$slider->img_name.'.'.$slider->img_ext ) }}" class="h-screen md:max-h-[80vh] w-full object-fit" alt="{{ $slider->img_name }}">
-                        </div>
-                    @endforeach
-
-                    <!-- Slider indicators -->
-                    <div class="absolute z-30 space-x-3 -translate-x-1/2 bottom-5 left-1/2 hidden md:flex">
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+    <header class="flex flex-col w-full h-[70vh] md:h-[80vh]">
+        <div id="animation-carousel" class="relative z-0 w-full h-full" data-carousel="slide">
+            <!-- Carousel wrapper -->
+            <div class="relative w-full h-full overflow-hidden rounded-none md:rounded-sm">
+                @foreach ($sliders as $slider)
+                    <div class="hidden duration-700 ease-in-out box-border" data-carousel-item="active">
+                        <img src="{{ asset('storage/img/jpg/sliders/'.$slider->img_name.'.'.$slider->img_ext ) }}" class=" w-full h-full object-fit" alt="{{ $slider->img_name }}">
                     </div>
+                @endforeach
+
+                <!-- Slider indicators -->
+                <div class="absolute z-30 space-x-3 -translate-x-1/2 bottom-5 left-1/2 hidden md:flex">
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
                 </div>
-
-                <!-- Slider controls -->
-                <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                        <span class="sr-only">Previous</span>
-                    </span>
-                </button>
-
-                <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        <span class="sr-only">Next</span>
-                    </span>
-                </button>
             </div>
-       </div>
 
+            <!-- Slider controls -->
+            <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span class="sr-only">Previous</span>
+                </span>
+            </button>
+
+            <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <span class="sr-only">Next</span>
+                </span>
+            </button>
+        </div>
     </header>
 
-    <main class="sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto space-y-5 px-5 md:px-0">
+    <main class="sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto space-y-12 px-5 md:px-0">
         {{-- categories --}}
         <div class="bg-amber-900 px-8 py-6 space-y-6 hidden md:flex md:flex-col shadow-md rounded-none md:rounded-bl-lg md:rounded-br-lg mt-1 w-[85%] mx-auto">
             <div class="text-lg text-amber-100 font-montserrat font-bold flex items-center justify-center space-x-2">
-                <span class="material-icons-outlined animate-pulse">
+                <span class="material-icons-outlined  ">
                     account_tree
                 </span>
                 <span class="">
@@ -148,7 +143,8 @@
             </div>
             <hr>
 
-            <div class="flex overflow-x-auto whitespace-nowrap space-x-10 py-8">
+            <div class="flex overflow-x-auto whitespace-nowrap space-x-10 py-4 items-center">
+                <span class="text-2xl text-gray-100 animate-pulse">&lt;</span>
                 @foreach ($categories as $category)
                 <a href="{{ url('catalog/'.$category->catId) }}" class="hover:text-[#CC9E5A] text-amber-50 transition duration-300 ease-in space-x-2 flex items-center">
                     <span class="material-icons-outlined">
@@ -159,83 +155,89 @@
                     </span>
                 </a>
                 @endforeach
+                <span class="text-2xl text-gray-100 animate-pulse">&gt;</span>
             </div>
         </div>
+    
+
+
 
         {{-- flash blocks --}}
-        <section class="flex flex-col space-y-10">
+        <section class="flex flex-col space-y-6">
             {{-- block 1 --}}
-            <div class="flex flex-col space-y-2">
-                <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
-                    <span class="material-icons-outlined animate-pulse">
-                        bolt
-                    </span>
-                    <span class="">
-                        Product flash
-                    </span>
-                </div>
+            <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
+                <span class="material-icons-outlined">
+                    bolt
+                </span>
+                <span class="">
+                    Product flash
+                </span>
+            </div>
 
-                <div class="overflow-x-auto whitespace-nowrap bg-white rounded px-5 py-4 space-x-3">
-                    @foreach($products as $product)
-                        <div class="image-container inline-block relative whitespace-nowrap w-1/2 md:w-1/5">
-                            <img src="{{ asset('storage/img/jpg/'.$product->category.'/'.$product->img_name.'.'.$product->img_ext) }}" alt="picture" class="h-40 w-full rounded-md">
-                            <div class="overlay flex justify-center items-center flex-col space-y-4 w-full px-2">
-                                <span class="text-base font-semibold text-white capitalize">
-                                    {{ $product->product_name }}
-                                </span>
-                                <div class="flex flex-col space-y-2 w-full justify-center items-center">
-                                    @foreach($contacts as $contact)
-                                        <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $product->product_name }}*" class="text-green-50 rounded-md px-8 py-2 hover:bg-green-50 hover:text-green-500 transition duration-300 ease-in text-xs text-center" target="_blank">
-                                            Get product
-                                        </a>
-                                    @endforeach
-                                    <a href="{{ url('catalog/'.$product->catId) }}" class="rounded-md text-amber-100 px-6 py-1 font-semibold hover:bg-amber-50 transition duration-300 ease-in hover:text-orange-500 text-xs text-center">
-                                        View more
+            <!-- Display the images -->
+            <div class="slider flex flex-row w-full bg-white">
+                @foreach ($products as $product)
+                    <div class="slide h-56 w-full relative image-container">
+                        <img src="{{ asset('storage/img/jpg/'.$product->category.'/'.$product->img_name.'.'.$product->img_ext) }}" alt="{{ $product->img_name }}" class="w-full h-full rounded-md border-4 border-transparent">
+
+                        {{-- overlay --}}
+                        <div class="overlay flex justify-center items-center flex-col space-y-4 w-full px-2">
+                            <span class="text-base font-semibold text-white capitalize">
+                                {{ $product->product_name }}
+                            </span>
+                            <div class="flex flex-col space-y-2 w-full justify-center items-center">
+                                @foreach($contacts as $contact)
+                                    <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $product->product_name }}*" class="text-green-50 rounded-md px-8 py-2 hover:bg-green-50 hover:text-green-500 transition duration-300 ease-in text-xs text-center" target="_blank">
+                                        Get product
                                     </a>
-                                </div>
+                                @endforeach
+                                <a href="{{ url('catalog/'.$product->catId) }}" class="rounded-md text-amber-100 px-6 py-1 font-semibold hover:bg-amber-50 transition duration-300 ease-in hover:text-orange-500 text-xs text-center">
+                                    View more
+                                </a>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
+                        </div>                    
+                    </div>
+                @endforeach
             </div>
         </section>
 
 
         {{-- Kids corner --}}
-        <section class="flex flex-col space-y-10">
+        <section class="flex flex-col space-y-6">
             {{-- block 1 --}}
-            <div class="flex flex-col space-y-2">
-                <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
-                    <span class="material-icons-outlined animate-pulse">
-                        child_care
-                    </span>
-                    <span class="">
-                        Kids Corner
-                    </span>
-                </div>
+            <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
+                <span class="material-icons-outlined  ">
+                    child_care
+                </span>
+                <span class="">
+                    Kids Corner
+                </span>
+            </div>
 
-                <div class="overflow-x-auto whitespace-nowrap bg-white rounded px-5 py-4 space-x-3">
-                    @foreach($kidsCorner as $kids)
-                        <div class="image-container inline-block relative whitespace-nowrap w-1/2 md:w-1/5">
-                            <img src="{{ asset('storage/img/jpg/'.$kids->category.'/'.$kids->img_name.'.'.$kids->img_ext) }}" alt="picture" class="h-40 w-full rounded-md">
-                            <div class="overlay flex justify-center items-center flex-col space-y-4 w-full px-2">
-                                <span class="text-base font-semibold text-white capitalize">
-                                    {{ $kids->product_name }}
-                                </span>
-                                <div class="flex flex-col space-y-2 w-full justify-center items-center">
-                                    @foreach($contacts as $contact)
-                                        <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $kids->product_name }}*" class="text-green-50 rounded-md px-8 py-2 hover:bg-green-50 hover:text-green-500 transition duration-300 ease-in text-xs text-center" target="_blank">
-                                            Get product
-                                        </a>
-                                    @endforeach
-                                    <a href="{{ url('catalog/'.$kids->catId) }}" class="rounded-md text-amber-100 px-6 py-1 font-semibold hover:bg-amber-50 transition duration-300 ease-in hover:text-orange-500 text-xs text-center">
-                                        View more
+            <!-- Display the images -->
+            <div class="slider flex flex-row w-full bg-white">
+                @foreach($kidsCorner as $kids)
+                    <div class="slide h-56 w-full relative image-container">
+                        <img src="{{ asset('storage/img/jpg/'.$kids->category.'/'.$kids->img_name.'.'.$kids->img_ext) }}" alt="{{ $kids->img_name }}" class="w-full h-full rounded-md border-4 border-transparent">
+
+                        {{-- overlay --}}
+                        <div class="overlay flex justify-center items-center flex-col space-y-4 w-full px-2">
+                            <span class="text-base font-semibold text-white capitalize">
+                                {{ $product->product_name }}
+                            </span>
+                            <div class="flex flex-col space-y-2 w-full justify-center items-center">
+                                @foreach($contacts as $contact)
+                                    <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $product->product_name }}*" class="text-green-50 rounded-md px-8 py-2 hover:bg-green-50 hover:text-green-500 transition duration-300 ease-in text-xs text-center" target="_blank">
+                                        Get product
                                     </a>
-                                </div>
+                                @endforeach
+                                <a href="{{ url('catalog/'.$kids->catId) }}" class="rounded-md text-amber-100 px-6 py-1 font-semibold hover:bg-amber-50 transition duration-300 ease-in hover:text-orange-500 text-xs text-center">
+                                    View more
+                                </a>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
+                        </div>                    
+                    </div>
+                @endforeach
             </div>
         </section>
 
@@ -249,92 +251,82 @@
                 <p class="text-white font-semibold font-montserrat flex flex-wrap text-base md:text-xl text-center">
                    At {{ config('app.name') }}, we handcraft custom furniture with attention to detail using the finest materials. From initial design to finishing touches, we create unique pieces that reflect your style and personality. With a commitment to sustainability, our furniture is built to last and minimize environmental impact.
                 </p>
-
-                {{-- <div class="flex justify-center">
-                    <a href="/about" class="outline outline-offset-2 outline-1 outline-[#CC9E5A] px-6 py-2 text-sm rounded text-amber-100 font-medium hover:bg-[#CC9E5A] transition duration-300 flex items-center space-x-1 justify-center">
-                        <span class="font-poppins">
-                            about
-                        </span>
-
-                        <span class="material-icons-outlined">
-                            chevron_right
-                        </span>
-                    </a>
-                </div> --}}
             </div>
         </section>
 
-        <section class="flex flex-col space-y-10">
+        <section class="flex flex-col space-y-6">
              {{-- block 2 --}}
-             <div class="flex flex-col space-y-1">
-                <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
-                    <span class="material-icons-outlined animate-pulse">
-                        sell
-                    </span>
-                    <span class="">
-                        Products below #30,000
-                    </span>
-                </div>
+            <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
+                <span class="material-icons-outlined  ">
+                    sell
+                </span>
+                <span class="">
+                    Products below #30,000
+                </span>
+            </div>
 
-                <div class="overflow-x-auto whitespace-nowrap bg-white rounded px-5 py-4 space-x-3">
-                    @foreach($priceCheckBelow30k as $below30k)
-                        <div class="image-container inline-block relative whitespace-nowrap w-1/2 md:w-1/5">
-                            <img src="{{ asset('storage/img/jpg/'.$below30k->category.'/'.$below30k->img_name.'.'.$below30k->img_ext) }}" alt="picture" class="h-40 w-full rounded-md" />
-                            <div class="overlay flex justify-center items-center flex-col space-y-4 w-full px-2">
-                                <span class="text-base font-semibold text-white capitalize">
-                                    {{ $below30k->product_name }}
-                                </span>
-                                <div class="flex flex-col space-y-2 w-full justify-center items-center">
-                                    @foreach($contacts as $contact)
-                                        <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $below30k->product_name }}*" class="text-green-50 rounded-md px-8 py-2 hover:bg-green-50 hover:text-green-500 transition duration-300 ease-in text-xs text-center" target="_blank">
-                                            Get product
-                                        </a>
-                                    @endforeach
-                                    <a href="{{ url('catalog/'.$below30k->catId) }}" class="rounded-md text-amber-100 px-6 py-1 font-semibold hover:bg-amber-50 transition duration-300 ease-in hover:text-orange-500 text-xs text-center">
-                                        View more
+            <!-- Display the images -->
+            <div class="slider flex flex-row w-full bg-white">
+                @foreach($priceCheckBelow30k as $below30k)
+                    <div class="slide h-56 w-full relative image-container">
+                        <img src="{{ asset('storage/img/jpg/'.$below30k->category.'/'.$below30k->img_name.'.'.$below30k->img_ext) }}" alt="{{ $below30k->img_name }}" class="w-full h-full rounded-md border-4 border-transparent">
+
+                        {{-- overlay --}}
+                        <div class="overlay flex justify-center items-center flex-col space-y-4 w-full px-2">
+                            <span class="text-base font-semibold text-white capitalize">
+                                {{ $product->product_name }}
+                            </span>
+                            <div class="flex flex-col space-y-2 w-full justify-center items-center">
+                                @foreach($contacts as $contact)
+                                    <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $product->product_name }}*" class="text-green-50 rounded-md px-8 py-2 hover:bg-green-50 hover:text-green-500 transition duration-300 ease-in text-xs text-center" target="_blank">
+                                        Get product
                                     </a>
-                                </div>
+                                @endforeach
+                                <a href="{{ url('catalog/'.$below30k->catId) }}" class="rounded-md text-amber-100 px-6 py-1 font-semibold hover:bg-amber-50 transition duration-300 ease-in hover:text-orange-500 text-xs text-center">
+                                    View more
+                                </a>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
+                        </div>                    
+                    </div>
+                @endforeach
             </div>
         </section>
 
-        <section class="flex flex-col space-y-10">
-                {{-- block 2 --}}
-            <div class="flex flex-col space-y-1">
-                <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
-                    <span class="material-icons-outlined animate-pulse">
-                        sell
-                    </span>
-                    <span class="">
-                        For Office Use
-                    </span>
-                </div>
+        <section class="flex flex-col space-y-6">
+            {{-- block 2 --}}
+            <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
+                <span class="material-icons-outlined  ">
+                    sell
+                </span>
+                <span class="">
+                    For Office Use
+                </span>
+            </div>
 
-                <div class="overflow-x-auto whitespace-nowrap bg-white rounded px-5 py-4 space-x-3">
-                    @foreach($officeUse as $office)
-                        <div class="image-container inline-block relative whitespace-nowrap w-1/2 md:w-1/5">
-                            <img src="{{ asset('storage/img/jpg/'.$office->category.'/'.$office->img_name.'.'.$office->img_ext) }}" alt="picture" class="h-40 w-full rounded-md" />
-                            <div class="overlay flex justify-center items-center flex-col space-y-4 w-full px-2">
-                                <span class="text-base font-semibold text-white capitalize">
-                                    {{ $office->product_name }}
-                                </span>
-                                <div class="flex flex-col space-y-2 w-full justify-center items-center">
-                                    @foreach($contacts as $contact)
-                                        <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $office->product_name }}*" class="text-green-50 rounded-md px-8 py-2 hover:bg-green-50 hover:text-green-500 transition duration-300 ease-in text-xs text-center" target="_blank">
-                                            Get product
-                                        </a>
-                                    @endforeach
-                                    <a href="{{ url('catalog/'.$office->catId) }}" class="rounded-md text-amber-100 px-6 py-1 font-semibold hover:bg-amber-50 transition duration-300 ease-in hover:text-orange-500 text-xs text-center">
-                                        View more
+            <!-- Display the images -->
+            <div class="slider flex flex-row w-full bg-white">
+                @foreach($officeUse as $office)
+                    <div class="slide h-56 w-full relative image-container">
+                        <img src="{{ asset('storage/img/jpg/'.$office->category.'/'.$office->img_name.'.'.$office->img_ext) }}" alt="{{ $office->img_name }}" class="w-full h-full rounded-md border-4 border-transparent">
+
+                        {{-- overlay --}}
+                        <div class="overlay flex justify-center items-center flex-col space-y-4 w-full px-2">
+                            <span class="text-base font-semibold text-white capitalize">
+                                {{ $product->product_name }}
+                            </span>
+                            <div class="flex flex-col space-y-2 w-full justify-center items-center">
+                                @foreach($contacts as $contact)
+                                    <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $product->product_name }}*" class="text-green-50 rounded-md px-8 py-2 hover:bg-green-50 hover:text-green-500 transition duration-300 ease-in text-xs text-center" target="_blank">
+                                        Get product
                                     </a>
-                                </div>
+                                @endforeach
+                                <a href="{{ url('catalog/'.$office->catId) }}" class="rounded-md text-amber-100 px-6 py-1 font-semibold hover:bg-amber-50 transition duration-300 ease-in hover:text-orange-500 text-xs text-center">
+                                    View more
+                                </a>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
+                        </div>                    
+                    </div>
+                @endforeach
             </div>
         </section>
     </main>

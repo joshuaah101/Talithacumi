@@ -23,7 +23,7 @@
             </div>
 
             <div class="space-y-5 flex flex-col px-2">
-                <div class="space-y-3 flex flex-col items-center justify-center">
+                <div class="space-y-3 flex flex-col">
                     <span class="text-gray-400">
                         #Menu
                     </span>
@@ -94,24 +94,30 @@
         </div>
     </nav>
 
-    <header class="flex sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl max-h-screen md:max-h-[900px] items-center mx-auto">
-        <section class="flex space-x-5 items-center justify-center md:justify-between bg-white w-full min-h-[100px] rounded-br-lg rounded-bl-lg px-0 md:px-5 md:py-5">
+    <header class="flex sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl max-h-screen md:max-h-[900px] mx-auto">
+        <section class="flex space-x-5 items-center justify-center md:justify-between bg-white w-full min-h-[50px] md:min-h-[100px] transition duration-300 ease-in rounded-br-lg rounded-bl-lg px-0 md:px-5 md:py-5">
             {{-- the page design --}}
-            <div class="font-montserrat font-normal text-lg text-[#CC9E5A] w-1/3">
-                Catalogue / <span class="text-amber-900 font-mono uppercase">
+            <div class="text-sm md:text-base text-[#CC9E5A] w-full md:w-1/3 space-x-1 uppercase flex justify-center items-center md:justify-start md:items-start">
+                <a href="{{ url('/') }}" class="font-normal font-poppins">
+                    Home
+                </a>
+
+                <span> &gt; </span>
+
+                <span class="text-amber-900 uppercase tracking-wider font-montserrat">
                     @foreach ($catalog_label as $label)
                         {{ $label->category }}
                     @endforeach
                 </span>
             </div>
 
-            <div class="hidden md:flex md:flex-col space-y-4 w-2/3">
-                <header class="text-xl font-light text-amber-900 font-montserrat">
+            <div class="hidden md:flex md:flex-col space-y-4 md:w-2/3">
+                {{-- <header class="text-xl font-light text-amber-900 font-montserrat">
                     Categories
-                </header>
-                <div class="flex overflow-x-auto whitespace-nowrap space-x-5 py-3">
+                </header> --}}
+                <div class="flex overflow-x-auto whitespace-nowrap space-x-10 px-2 py-5">
                     @foreach ($categories as $category)
-                        <a href="{{ url('catalog/'.$category->catId) }}" class="hover:text-[#CC9E5A] text-amber-900 transition duration-300 ease-in space-x-1 flex items-center">
+                        <a href="{{ url('catalog/'.$category->catId) }}" class="hover:text-[#CC9E5A] text-amber-900 transition duration-300 ease-in space-x-1 flex items-center text-base font-poppins">
                             <span class="material-icons-outlined">
                                 {{ $category->icon }}
                             </span>
