@@ -6,51 +6,37 @@
 
 @section('body')
     {{-- mobile menu --}}
-    <div class="hidden shadow-md sticky top-0 right-0 z-20 h-screen overflow-y-auto w-full transition duration-300 ease-in" id="mobile-menu">
-        <div class="bg-amber-900 px-4 py-3 my-auto space-y-12 flex flex-col">
-            <div class="flex items-center justify-between">
-                <a href="/" class="">
-                    <img src="{{ asset('storage/img/png/logo.png') }}" alt="" class="w-10">
-                </a>
-
+    <div class="hidden shadow-md sticky top-0 left-0 z-20 h-screen overflow-y-auto w-full transition duration-300 ease-in" id="mobile-menu">
+        <div class="bg-amber-900 px-8 pt-4 pb-8 my-auto space-y-3 flex flex-col">
+            <div class="flex justify-end">
                 <a href="#" class="transition duration-300 ease-in" id="close">
-                    <span class="material-icons-outlined text-4xl font-bold text-red-100 hover:text-red-700">
-                        &times;
+                    <span class="material-icons-outlined text-3xl text-red-100 hover:text-red-700">
+                        close
                     </span>
                 </a>
             </div>
 
-            <div class="space-y-5 flex flex-col px-2">
+            <div class="space-y-12 flex flex-col px-2">
                 <div class="space-y-3 flex flex-col">
                     <span class="text-gray-400">
                         #Menu
                     </span>
 
-                    <div class="flex space-x-2 items-center">
-                        <span class="material-icons-outlined text-[#CC9E5A]">
+
+                    <a href="/" class="font-semibold hover:text-[#CC9E5A] text-amber-50 flex space-x-2 items-center">
+                        <span class="material-icons-outlined">
                             home
                         </span>
-                        <a href="/" class="text-[#CC9E5A] font-semibold">
+                        <span>
                             Home
-                        </a>
-                    </div>
-
-                    <div class="flex space-x-2 items-center">
-                        <span class="material-icons-outlined text-amber-50 hover:text-amber-700 transition duration-300 ease-in">
-                            info
                         </span>
-                        <a href="/about" class="text-amber-50 hover:text-amber-700 transition duration-300 ease-in font-semibold">
-                            About
-                        </a>
-                    </div>
+                    </a>
                 </div>
 
-                <div class="space-y-3 flex flex-col mt-16">
+                <div class="space-y-3 flex flex-col">
                     <span class="text-gray-400">
                         #Categories
                     </span>
-
-
 
                     @foreach ($categories as $category)
                         <a href="{{ url('catalog/'.$category->catId) }}" class="hover:text-[#CC9E5A] text-amber-50 transition duration-300 ease-in space-x-2 flex items-center">
@@ -67,7 +53,8 @@
         </div>
     </div>
 
-    <nav class="bg-amber-900 w-full shadow-md sticky top-0 z-10 border-b-2 border-[#CC9E5A]">
+
+    <nav class="bg-amber-900 w-full shadow-md z-10 border-b-2 border-[#CC9E5A]">
         <div class="flex sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto justify-between items-center py-3 px-5 md:px-0">
             <a href="/" class="">
                 <img src="{{ asset('storage/img/png/logo.png') }}" alt="" class="w-10 md:w-12">
@@ -75,13 +62,13 @@
             </a>
 
             <div class="hidden md:flex items-center space-x-5 font-semibold text-sm font-poppins tracking-wide">
-                <a href="/" class="{{ request()->is('/') ? 'text-[#CC9E5A] font-bold' : 'text-amber-50 font-semibold hover:text-[#CC9E5A]' }} transition duration-300 ease-in">
+                <a href="/" class="{{ request()->is('/') ? 'hidden' : 'text-amber-50 font-semibold hover:text-[#CC9E5A]' }} transition duration-300 ease-in">
                     Home
                 </a>
 
-                <a href="/about" class="{{ request()->is('about') ? 'text-[#CC9E5A] font-bold' : 'text-amber-50 font-semibold hover:text-[#CC9E5A]' }} transition duration-300 ease-in">
+                {{-- <a href="/about" class="{{ request()->is('about') ? 'text-[#CC9E5A] font-bold' : 'text-amber-50 font-semibold hover:text-[#CC9E5A]' }} transition duration-300 ease-in">
                     About
-                </a>
+                </a> --}}
             </div>
 
             <button class="shadow-sm rounded flex items-center md:hidden" id="btn-menu">
@@ -93,7 +80,7 @@
     </nav>
 
 {{-- sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl --}}
-    <header class="flex flex-col w-full h-[70vh] md:h-[80vh]">
+    <header class="flex flex-col w-full h-[60vh] md:h-[78vh]">
         <div id="animation-carousel" class="relative z-0 w-full h-full" data-carousel="slide">
             <!-- Carousel wrapper -->
             <div class="relative w-full h-full overflow-hidden rounded-none md:rounded-sm">
@@ -132,40 +119,43 @@
 
     <main class="sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto space-y-12 px-5 md:px-0">
         {{-- categories --}}
-        <div class="bg-amber-900 px-8 py-6 space-y-6 hidden md:flex md:flex-col shadow-md rounded-none md:rounded-bl-lg md:rounded-br-lg mt-1 w-[85%] mx-auto">
-            <div class="text-lg text-amber-100 font-montserrat font-bold flex items-center justify-center space-x-2">
-                <span class="material-icons-outlined  ">
-                    account_tree
-                </span>
-                <span class="">
-                    Categories
-                </span>
-            </div>
-            <hr>
-
-            <div class="flex overflow-x-auto whitespace-nowrap space-x-10 py-4 items-center">
-                <span class="text-2xl text-gray-100 animate-pulse">&lt;</span>
-                @foreach ($categories as $category)
-                <a href="{{ url('catalog/'.$category->catId) }}" class="hover:text-[#CC9E5A] text-amber-50 transition duration-300 ease-in space-x-2 flex items-center">
+        <div class="flex flex-col shadow-md rounded-none md:rounded-bl-lg md:rounded-br-lg mt-1 md:w-[85%] mx-auto">
+            <div class="text-xs md:text-lg bg-[#CC9E5A] text-amber-900 font-montserrat font-bold flex flex-col px-8 py-3 items-center justify-center md:items-start md:justify-start">
+               <div class="flex items-center space-x-2">
                     <span class="material-icons-outlined">
-                        {{ $category->icon }}
+                        account_tree
                     </span>
-                    <span>
-                        {{ ucfirst($category->category) }}
+                    <span class="">
+                        Categories
                     </span>
-                </a>
+               </div>
+               {{--                
+                <span class="material-icons-outlined">
+                    commit
+                </span> --}}
+            </div>
+
+            <div class="bg-amber-900 flex whitespace-nowrap flex-nowrap md:flex-wrap overflow-x-auto md:overflow-x-hidden gap-5 py-5 md:py-10 px-0 md:px-8">
+                @foreach ($categories as $category)
+                    <a href="{{ url('catalog/'.$category->catId) }}" class="hover:text-[#CC9E5A] text-amber-50 transition duration-300 ease-in space-x-1 px-2 flex items-center text-sm font-poppins">
+                        <span class="material-icons-outlined">
+                            {{ $category->icon }}
+                        </span>
+                        <span class="font-normal">
+                            {{ ucfirst($category->category) }}
+                        </span>
+                    </a>
                 @endforeach
-                <span class="text-2xl text-gray-100 animate-pulse">&gt;</span>
             </div>
         </div>
-    
+
 
 
 
         {{-- flash blocks --}}
         <section class="flex flex-col space-y-6">
             {{-- block 1 --}}
-            <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
+            <div class="text-md text-amber-900 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-[#CC9E5A] flex items-center space-x-2">
                 <span class="material-icons-outlined">
                     bolt
                 </span>
@@ -195,7 +185,7 @@
                                     View more
                                 </a>
                             </div>
-                        </div>                    
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -205,7 +195,7 @@
         {{-- Kids corner --}}
         <section class="flex flex-col space-y-6">
             {{-- block 1 --}}
-            <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
+            <div class="text-md text-amber-900 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-[#CC9E5A] flex items-center space-x-2">
                 <span class="material-icons-outlined  ">
                     child_care
                 </span>
@@ -235,7 +225,7 @@
                                     View more
                                 </a>
                             </div>
-                        </div>                    
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -243,12 +233,12 @@
 
 
         {{-- parallax effect --}}
-        <section class="flex justify-center items-center bg-no-repeat bg-cover bg-fixed bg-center min-h-[23rem] px-8 py-6 my-8 rounded" style="background-image: linear-gradient(to bottom, rgba(20, 3, 3, 0.16), rgba(8, 8, 34, 0.224)),url('{{ asset('storage/img/jpg/parallax/wood-bg.jpg'); }}')">
+        <section class="flex justify-center items-center bg-no-repeat bg-cover bg-fixed bg-center min-h-[23rem] px-8 py-6 my-8 rounded" style="background-image: linear-gradient(to bottom, rgba(20, 3, 3, 0.16), rgba(8, 8, 34, 0.224)),url('{{ asset('storage/img/jpg/parallax/parallax.jpg'); }}')">
             <div class="flex flex-col space-y-8">
-                <header class="flex justify-center text-2xl md:text-4xl font-montserrat font-semibold text-amber-50">
+                <header class="flex justify-center text-lg md:text-2xl font-montserrat font-semibold text-amber-50">
                     Our Creed
                 </header>
-                <p class="text-white font-semibold font-montserrat flex flex-wrap text-base md:text-xl text-center">
+                <p class="text-white font-semibold font-montserrat flex flex-wrap text-sm md:text-base text-center">
                    At {{ config('app.name') }}, we handcraft custom furniture with attention to detail using the finest materials. From initial design to finishing touches, we create unique pieces that reflect your style and personality. With a commitment to sustainability, our furniture is built to last and minimize environmental impact.
                 </p>
             </div>
@@ -256,12 +246,12 @@
 
         <section class="flex flex-col space-y-6">
              {{-- block 2 --}}
-            <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
+            <div class="text-md text-amber-900 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-[#CC9E5A] flex items-center space-x-2">
                 <span class="material-icons-outlined  ">
                     sell
                 </span>
                 <span class="">
-                    Products below #30,000
+                    Items below #30,000
                 </span>
             </div>
 
@@ -286,7 +276,7 @@
                                     View more
                                 </a>
                             </div>
-                        </div>                    
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -294,7 +284,7 @@
 
         <section class="flex flex-col space-y-6">
             {{-- block 2 --}}
-            <div class="text-md text-amber-100 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-amber-900 flex items-center space-x-2">
+            <div class="text-md text-amber-900 rounded rounded-bl-lg rounded-br-lg px-5 py-3 font-montserrat font-bold bg-[#CC9E5A] flex items-center space-x-2">
                 <span class="material-icons-outlined  ">
                     sell
                 </span>
@@ -324,7 +314,7 @@
                                     View more
                                 </a>
                             </div>
-                        </div>                    
+                        </div>
                     </div>
                 @endforeach
             </div>

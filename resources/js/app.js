@@ -23,12 +23,12 @@ if(closeMobileMenu){
 
 })
 
-//Initialize the Slick Carousel 
+//Initialize the Slick Carousel
 $(function(){
     $('.slider').slick({
-        slidesToShow: 5, // Number of slides to show on desktop
-        slidesToScroll: 1,
-        dots: true,
+        slidesToShow: 4, // Number of slides to show on desktop
+        slidesToScroll: 3,
+        dots: false,
         swipe: true,
         cssEase: 'ease',
         swipeToSlide: true,

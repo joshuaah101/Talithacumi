@@ -1,11 +1,11 @@
 @foreach ($catalogues as $catalog)
-<div class="flex flex-col md:flex-row gap-1 shadow-lg px-3 bg-white py-2 rounded-lg w-full md:w-[32%]">
-    <div class="flex w-full md:w-2/5">
+<div class="flex flex-col md:flex-row gap-1 shadow-lg px-2 bg-white py-2 rounded-lg w-full md:w-[32%]">
+    <div class="flex w-full md:w-1/2">
         <a href="{{ asset('storage/img/jpg/mirror/'.$catalog->img_name.'.'.$catalog->img_ext ) }}" class="border-[5px] hover:scale-105 transition duration-300 ease-in rounded-[50%]" target="_blank">
-            <img src="{{ asset('storage/img/jpg/mirror/'.$catalog->img_name.'.'.$catalog->img_ext ) }}" alt="picture" class="h-full w-full rounded-[50%]">
+            <img src="{{ asset('storage/img/jpg/mirror/'.$catalog->img_name.'.'.$catalog->img_ext ) }}" alt="picture" class="w-64 h-48 md:h-full md:w-full rounded-[50%]">
         </a>
     </div>
-    <div class="flex flex-col gap-2 px-3 py-2 space-y-5 w-full md:w-3/5 my-auto">
+    <div class="flex flex-col gap-2 pl-3 py-2 space-y-5 w-full md:w-1/2 my-auto">
         <div class="flex flex-col space-y-5">
             <span class="text-amber-900 font-extralight font-poppins text-xl">
                 {{ ucfirst($catalog->product_name) }}
@@ -21,7 +21,7 @@
             </header>
             @foreach($contacts as $contact)
             <div class="flex flex-wrap gap-2">
-                <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $catalog->product_name }}*" class="px-3 py-1 inline-block font-medium font-poppins hover:scale-125 hover:border-green-700 shadow transition duration-300 ease-in text-xs text-green-600 border rounded justify-center items-center" target="_blank">
+                <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $catalog->product_name }}*" class="px-2 py-1 hover:scale-125 hover:border-green-700 transition duration-300 ease-in text-xs text-green-600 rounded flex justify-center items-center" target="_blank">
                     <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <!-- Generator: Sketch 3.8.1 (29687) - http://www.bohemiancoding.com/sketch -->
                         <title>whatsapp [#128]</title>
@@ -37,13 +37,13 @@
                     </svg>
                 </a>
 
-                <a href="tel:+{{ $contact->phone_number }}" class="px-3 py-1 inline-block font-medium font-poppins hover:scale-125 hover:border-blue-700 shadow transition duration-300 ease-in text-xs text-blue-600 border rounded justify-center items-center" target="_blank">
+                <a href="tel:+{{ $contact->phone_number }}" class="px-2 py-1 hover:scale-125 hover:border-blue-700 transition duration-300 ease-in text-xs text-blue-600 rounded flex justify-center items-center" target="_blank">
                     <span class="material-icons-outlined">
                         phone
                     </span>
                 </a>
 
-                <a href="mailto:{{ $contact->email }}" class="px-3 py-1 font-medium font-poppins hover:scale-125 hover:border-blue-900 shadow transition duration-300 ease-in text-xs text-blue-800 border rounded flex justify-center items-center" target="_blank">
+                <a href="mailto:{{ $contact->email }}" class="px-2 py-1 hover:scale-125 hover:border-red-700 transition duration-300 ease-in text-xs text-red-600 rounded flex justify-center items-center" target="_blank">
                     <span class="material-icons-outlined">
                         alternate_email
                     </span>

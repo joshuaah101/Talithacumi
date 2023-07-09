@@ -9,8 +9,8 @@
 @section('body')
     {{-- mobile menu --}}
     <div class="hidden shadow-md sticky top-0 left-0 z-20 h-screen overflow-y-auto w-full transition duration-300 ease-in" id="mobile-menu">
-        <div class="bg-amber-900 px-4 py-3 my-auto space-y-12 flex flex-col">
-            <div class="flex items-center justify-between">
+        <div class="bg-amber-900 px-8 pt-4 pb-8 my-auto space-y-3 flex flex-col">
+            {{-- <div class="flex items-center justify-between">
                 <a href="/" class="">
                     <img src="{{ asset('storage/img/png/logo.png') }}" alt="" class="w-10">
                 </a>
@@ -20,39 +20,37 @@
                         &times;
                     </span>
                 </a>
+            </div> --}}
+
+            <div class="flex justify-end">
+                <a href="#" class="transition duration-300 ease-in" id="close">
+                    <span class="material-icons-outlined text-3xl text-red-100 hover:text-red-700">
+                        close
+                    </span>
+                </a>
             </div>
 
-            <div class="space-y-5 flex flex-col px-2">
+            <div class="space-y-12 flex flex-col px-2">
                 <div class="space-y-3 flex flex-col">
                     <span class="text-gray-400">
                         #Menu
                     </span>
 
-                    <div class="flex space-x-2 items-center">
-                        <span class="material-icons-outlined text-[#CC9E5A]">
+
+                    <a href="/" class="font-semibold hover:text-[#CC9E5A] text-amber-50 flex space-x-2 items-center">
+                        <span class="material-icons-outlined">
                             home
                         </span>
-                        <a href="/" class="text-[#CC9E5A] font-semibold">
+                        <span>
                             Home
-                        </a>
-                    </div>
-
-                    <div class="flex space-x-2 items-center">
-                        <span class="material-icons-outlined text-amber-50 hover:text-amber-700 transition duration-300 ease-in">
-                            info
                         </span>
-                        <a href="/about" class="text-amber-50 hover:text-amber-700 transition duration-300 ease-in font-semibold">
-                            About
-                        </a>
-                    </div>
+                    </a>
                 </div>
 
-                <div class="space-y-3 flex flex-col mt-16">
+                <div class="space-y-3 flex flex-col">
                     <span class="text-gray-400">
                         #Categories
                     </span>
-
-
 
                     @foreach ($categories as $category)
                         <a href="{{ url('catalog/'.$category->catId) }}" class="hover:text-[#CC9E5A] text-amber-50 transition duration-300 ease-in space-x-2 flex items-center">
@@ -69,7 +67,7 @@
         </div>
     </div>
 
-    <nav class="bg-amber-900 w-full shadow-md sticky top-0 z-10 transition duration-300 ease-in border-b-2 border-[#CC9E5A]">
+    <nav class="bg-amber-900 w-full shadow-md z-10 transition duration-300 ease-in border-b-2 border-[#CC9E5A]">
         <div class="flex sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto justify-between items-center py-3 px-5 md:px-0">
             <a href="/" class="">
                 <img src="{{ asset('storage/img/png/logo.png') }}" alt="" class="w-10 md:w-12">
@@ -77,13 +75,13 @@
             </a>
 
             <div class="hidden md:flex items-center space-x-5 font-semibold text-sm font-poppins tracking-wide">
-                <a href="/" class="{{ request()->is('/') ? 'text-[#CC9E5A] font-bold' : 'text-amber-50 font-semibold hover:text-[#CC9E5A]' }} transition duration-300 ease-in">
+                <a href="/" class="{{ request()->is('/') ? 'hidden' : 'text-amber-50 font-semibold hover:text-[#CC9E5A]' }} transition duration-300 ease-in">
                     Home
                 </a>
 
-                <a href="/about" class="{{ request()->is('about') ? 'text-[#CC9E5A] font-bold' : 'text-amber-50 font-semibold hover:text-[#CC9E5A]' }} transition duration-300 ease-in">
+                {{-- <a href="/about" class="{{ request()->is('about') ? 'text-[#CC9E5A] font-bold' : 'text-amber-50 font-semibold hover:text-[#CC9E5A]' }} transition duration-300 ease-in">
                     About
-                </a>
+                </a> --}}
             </div>
 
             <button class="shadow-sm rounded flex items-center md:hidden" id="btn-menu">
@@ -95,29 +93,29 @@
     </nav>
 
     <header class="flex sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl max-h-screen md:max-h-[900px] mx-auto">
-        <section class="flex space-x-5 items-center justify-center md:justify-between bg-white w-full min-h-[50px] md:min-h-[100px] transition duration-300 ease-in rounded-br-lg rounded-bl-lg px-0 md:px-5 md:py-5">
+        <section class="flex space-x-5 items-center justify-center md:justify-between bg-[#CC9E5A] w-full min-h-[50px] md:min-h-[100px] transition duration-300 ease-in rounded-br-lg rounded-bl-lg px-0 md:px-5 md:py-5">
             {{-- the page design --}}
-            <div class="text-sm md:text-base text-[#CC9E5A] w-full md:w-1/3 space-x-1 uppercase flex justify-center items-center md:justify-start md:items-start">
-                <a href="{{ url('/') }}" class="font-normal font-poppins">
+            <div class="text-amber-50 w-full md:w-1/3 space-x-1 uppercase flex justify-center items-center md:justify-start md:items-center md:ml-12">
+                <a href="{{ url('/') }}" class="font-normal font-poppins text-sm md:text-base hover:text-amber-900 transition duration-300 ease">
                     Home
                 </a>
 
                 <span> &gt; </span>
 
-                <span class="text-amber-900 uppercase tracking-wider font-montserrat">
+                <span class="text-amber-900 uppercase tracking-wider font-montserrat text-sm md:text-xl">
                     @foreach ($catalog_label as $label)
                         {{ $label->category }}
                     @endforeach
                 </span>
             </div>
 
-            <div class="hidden md:flex md:flex-col space-y-4 md:w-2/3">
-                {{-- <header class="text-xl font-light text-amber-900 font-montserrat">
+            <div class="hidden md:flex md:flex-col md:w-2/3">
+                <header class="text-sm font-medium text-amber-50 font-montserrat">
                     Categories
-                </header> --}}
-                <div class="flex overflow-x-auto whitespace-nowrap space-x-10 px-2 py-5">
+                </header>
+                <div class="flex flex-wrap gap-5 py-5">
                     @foreach ($categories as $category)
-                        <a href="{{ url('catalog/'.$category->catId) }}" class="hover:text-[#CC9E5A] text-amber-900 transition duration-300 ease-in space-x-1 flex items-center text-base font-poppins">
+                        <a href="{{ url('catalog/'.$category->catId) }}" class="hover:text-amber-100 text-amber-900 transition duration-300 ease-in space-x-1 px-2 flex items-center text-sm font-poppins">
                             <span class="material-icons-outlined">
                                 {{ $category->icon }}
                             </span>
