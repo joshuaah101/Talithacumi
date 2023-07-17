@@ -1,13 +1,13 @@
 @foreach ($catalogues as $catalog)
 <div class="flex flex-col md:flex-row gap-5 shadow-lg px-2 bg-white py-2 rounded-lg w-full md:w-[32%]">
-    <div class="flex w-full md:w-[35%] items-center">
+    <div class="flex w-full md:w-[35%] items-center justify-center md:justify-start">
         <a href="{{ asset('storage/img/jpg/table/'.$catalog->img_name.'.'.$catalog->img_ext ) }}" class="hover:scale-105 transition duration-300 ease-in" target="_blank">
             <div class="w-[100%] h-40 rounded-md">
                 <img src="{{ asset('storage/img/jpg/table/'.$catalog->img_name.'.'.$catalog->img_ext ) }}" alt="picture" class="h-full w-full rounded-[100%]">
             </div>
         </a>
     </div>
-    <div class="flex flex-col gap-1 py-2 space-y-1 w-full md:w-[65%] my-auto">
+    <div class="flex flex-col gap-1 py-2 space-y-1 w-full md:w-[65%] my-auto items-center justify-center md:justify-start md:items-start">
         <div class="flex flex-col">
             <span class="text-amber-900 font-extralight font-poppins text-lg">
                 {{ ucfirst($catalog->product_name) }}
@@ -28,7 +28,7 @@
             </div>
         @endif
 
-        <div class="flex flex-col space-y-1">
+        <div class="flex space-x-1 items-center">
             <header>
                 Contact us via:
             </header>
