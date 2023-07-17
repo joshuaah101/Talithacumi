@@ -1,27 +1,40 @@
 @foreach ($catalogues as $catalog)
-<div class="flex flex-col md:flex-row gap-1 shadow-lg px-2 bg-white py-2 rounded-lg w-full md:w-[32%]">
-    <div class="flex w-full md:w-1/2">
-        <a href="{{ asset('storage/img/jpg/chair/'.$catalog->img_name.'.'.$catalog->img_ext ) }}" class="border-[5px] hover:scale-105 transition duration-300 ease-in rounded-[50%]" target="_blank">
-            <img src="{{ asset('storage/img/jpg/chair/'.$catalog->img_name.'.'.$catalog->img_ext ) }}" alt="picture" class="w-64 h-48 md:h-full md:w-full rounded-[50%]">
+<div class="flex flex-col md:flex-row gap-5 shadow-lg px-2 bg-white py-2 rounded-lg w-full md:w-[32%]">
+    <div class="flex w-full md:w-[35%] items-center">
+        <a href="{{ asset('storage/img/jpg/chair/'.$catalog->img_name.'.'.$catalog->img_ext ) }}" class="hover:scale-105 transition duration-300 ease-in" target="_blank">
+            <div class="w-[100%] h-40 rounded-md">
+                <img src="{{ asset('storage/img/jpg/chair/'.$catalog->img_name.'.'.$catalog->img_ext ) }}" alt="picture" class="h-full w-full rounded-[100%]">
+            </div>
         </a>
     </div>
-    <div class="flex flex-col gap-2 pl-3 py-2 space-y-5 w-full md:w-1/2 my-auto">
-        <div class="flex flex-col space-y-5">
-            <span class="text-amber-900 font-extralight font-poppins text-xl">
+    <div class="flex flex-col gap-1 py-2 space-y-1 w-full md:w-[65%] my-auto">
+        <div class="flex flex-col">
+            <span class="text-amber-900 font-extralight font-poppins text-lg">
                 {{ ucfirst($catalog->product_name) }}
             </span>
             <span class="text-amber-900 font-normal font-poppins text-sm">
-               Price: #{{ number_format($catalog->price, 0, '.', ',') }}
+               #{{ number_format($catalog->price, 0, '.', ',') }}
             </span>
         </div>
 
-        <div class="flex flex-col space-y-2">
+        @if(!empty($catalog->description))
+            <div class="flex flex-col space-y-1">
+                <header class="text-xs">
+                    Description:
+                </header>
+                <span class="text-[10px]">
+                    {{ $catalog->description }}
+                </span>
+            </div>
+        @endif
+
+        <div class="flex flex-col space-y-1">
             <header>
-                Contact:
+                Contact us via:
             </header>
             @foreach($contacts as $contact)
             <div class="flex flex-wrap gap-2">
-                <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $catalog->product_name }}*" class="px-2 py-1 hover:scale-125 hover:border-green-700 transition duration-300 ease-in text-xs text-green-600 rounded flex justify-center items-center" target="_blank">
+                <a href="https://wa.me/{{ $contact->whatsapp }}?text=Hello%20good%20day,%0A%0AI%20will%20like%20to%20enquire%20about%20this%20*{{ $catalog->product_name }}* %0AWith the image link below %0A {{ asset('storage/img/jpg/chair/'.$catalog->img_name.'.'.$catalog->img_ext ) }}" class="px-2 py-1 hover:scale-125 hover:border-green-700 transition duration-300 ease-in text-xs text-green-600 rounded flex justify-center items-center" target="_blank">
                     <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <!-- Generator: Sketch 3.8.1 (29687) - http://www.bohemiancoding.com/sketch -->
                         <title>whatsapp [#128]</title>

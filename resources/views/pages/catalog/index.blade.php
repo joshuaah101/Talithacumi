@@ -137,7 +137,7 @@
                 @if ($label->category == 'school')
                         @include('pages.catalog.inc.school')
                     @elseif ($label->category == 'kids')
-                        @include('pages.catalog.inc.baby')
+                        @include('pages.catalog.inc.kids')
                     @elseif ($label->category == 'dressing-mirror')
                         @include('pages.catalog.inc.mirror')
                     @elseif ($label->category == 'shoe-rack')
