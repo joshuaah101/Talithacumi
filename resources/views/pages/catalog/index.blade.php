@@ -150,6 +150,8 @@
                         @include('pages.catalog.inc.chair')
                     @elseif ($label->category == 'supermarket')
                         @include('pages.catalog.inc.supermarket')
+                    @elseif ($label->category == 'bed frame')
+                        @include('pages.catalog.inc.bed-frame')
                 @endif
             @endforeach
         </div>
